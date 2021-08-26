@@ -21,7 +21,7 @@ public class TablaNumero extends DefaultTableModel
                 matrizTabla[i][0]=intervaloActual.nombreIntervalo();// fila i columna intervalo
                 matrizTabla[i][1]=intervaloActual.getFrecuenciaObservada();// fila i columna frecuencia observada
                 matrizTabla[i][2]=intervaloActual.getFrecuenciaEsperada();// fila i columna frecuencia esperada
-                matrizTabla[i][3]=intervaloActual.getEstadistico();//fila i columna estadistico
+                matrizTabla[i][3]=Math.round(intervaloActual.getEstadistico() * 10000d) / 10000d;//fila i columna estadistico
                 acumuladorFrecuenciaObservada += intervaloActual.getFrecuenciaObservada();;
                 acumuladorEstadistico += intervaloActual.getEstadistico();
                 acumuladorFrecuenciaEsperada += intervaloActual.getFrecuenciaEsperada();
@@ -30,7 +30,7 @@ public class TablaNumero extends DefaultTableModel
             matrizTabla[i][0]="Total";
             matrizTabla[i][1]=acumuladorFrecuenciaObservada;
             matrizTabla[i][2]=acumuladorFrecuenciaEsperada;
-            matrizTabla[i][3]=acumuladorEstadistico;
+            matrizTabla[i][3]=Math.round(acumuladorEstadistico * 10000d) / 10000d;
             String[] NombresDeColumnas =  new String [] 
             {  "Intervalo", "Frecuencia observada", "Frecuencia esperada", "Estadístico de la prueba" };
             
