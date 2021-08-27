@@ -437,14 +437,16 @@ public class Principal extends javax.swing.JFrame {
        
         manejador.resetear();
         boolean fallo = false;
-        if(Integer.parseInt(txtN.getText()) < 1000001)
+        boolean discreta = true;
+      
+        if(Integer.parseInt(txtN.getText()) < 1000001 & Integer.parseInt(txtN.getText()) > 0)
         {
                     manejador.setN(Integer.parseInt(txtN.getText()));
                     fallo = false;
         }
         else
         {
-            JOptionPane.showMessageDialog(new JFrame(), "N no deberia ser mayor a 1000000", "Parámetros incorrectos", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(), "N no deberia ser mayor a 1000000 o menor a 0", "Parámetros incorrectos", JOptionPane.WARNING_MESSAGE);
             txtN.requestFocus();
             fallo = true;
         }

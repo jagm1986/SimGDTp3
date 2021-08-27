@@ -1,12 +1,17 @@
 package GeneradorDeAleatorios;
 
+import java.util.ArrayList;
+import org.apache.commons.math3.distribution.PoissonDistribution;
+
 public class GeneradorPoisson extends IGeneradorNumerosAleatorios
 {
     private final float lambda;
-
+    
     public GeneradorPoisson(float lambda) {
         super();
         this.lambda = lambda;
+
+        
     }
     
     
@@ -33,23 +38,27 @@ public class GeneradorPoisson extends IGeneradorNumerosAleatorios
         } while (p >= a);
         
         return resultado;
+
     }
 
     @Override
     public double valuarFuncionDeDensidad(double valorAleatorio)
     {
-        double lambdaALaX = Math.pow(lambda, valorAleatorio);
+        int vA = (int)valorAleatorio;
+        double lambdaALaX = Math.pow(lambda, (double)vA);
         
         double menosLambda = 0 - lambda;
         double eALaLambda = Math.exp(menosLambda);
         
-        double factorial = factorial((int)valorAleatorio);
+        double factorial = factorial((int)vA);
         
         double producto = lambdaALaX * eALaLambda;
        
         double resultado = producto/factorial;
         return resultado;
     }
+    
+
     
     private int factorial(int x)
     {

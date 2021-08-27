@@ -29,8 +29,6 @@ public class GeneradorUniforme extends IGeneradorNumerosAleatorios
     @Override
     public double valuarFuncionDeDensidad(double valorAleatorio)
     {
-        double amplitud = extremoDerecho - extremoIzquierdo;
-        double resultado = 1/amplitud;
-        return resultado;
+        return 0.0; 
     }
 }

@@ -109,8 +109,9 @@ public class ManejadorIntervalos {
 
     public void generarDistribucionPoisson(float lambda) {
         gna = new GeneradorPoisson(lambda);
+
         for (int i = 0; i < N; i++) {
-            double numeroGenerado = gna.generarAleatorio();
+            double numeroGenerado =  gna.generarAleatorio();
             numerosGenerados.add(numeroGenerado);
 
             if (i == 0) {
@@ -161,31 +162,48 @@ public class ManejadorIntervalos {
             double valorFinIntervaloActual = intervaloActual.getValorFin();
             double valorInicioIntervaloActual = intervaloActual.getValorInicio();
 
-            double probabilidadIntervaloActual;
+            double probabilidadIntervaloActual=0;
             double frecuenciaEsperadaIntervaloActual;
 
-            if (!(gna instanceof GeneradorPoisson)) // es distinto para Poisson porque trabaja con la marca de clase.
+            if ((gna instanceof GeneradorPoisson)) // es distinto para Poisson porque trabaja con la marca de clase.
             {
-                double amplitudIntervalo = valorFinIntervaloActual - valorInicioIntervaloActual;
+               /* double amplitudIntervalo = valorFinIntervaloActual - valorInicioIntervaloActual;
 
                 double marcaClaseIntervaloActual = valorInicioIntervaloActual + (amplitudIntervalo / 2);
 
                 double densidadMarcaClaseIntervaloActual = gna.valuarFuncionDeDensidad(marcaClaseIntervaloActual);
 
-                probabilidadIntervaloActual = densidadMarcaClaseIntervaloActual * amplitudIntervalo;
-            } else {
+                probabilidadIntervaloActual = densidadMarcaClaseIntervaloActual * amplitudIntervalo;*/
+               probabilidadIntervaloActual = gna.valuarFuncionDeDensidad(valorInicioIntervaloActual);
+                
+            }/* else {
                 int valorInicioEntero = (int) valorInicioIntervaloActual;
                 int valorFinEntero = (int) valorFinIntervaloActual;
 
                 probabilidadIntervaloActual = 0;
                 for (int i = valorInicioEntero; i < valorFinEntero; i++) {
-                    probabilidadIntervaloActual += gna.valuarFuncionDeDensidad(i); // utiliza la funcion de densidad para calcular la probabilidad.
+                    probabilidadIntervaloActual += gna.valuarFuncionDeDensidad(i);// utiliza la funcion de densidad para calcular la probabilidad.
                 }
-
+            //  probabilidadIntervaloActual = gna.valuarFuncionDeDensidad(valorFinIntervaloActual) - gna.valuarFuncionDeDensidad(valorInicioIntervaloActual);
+                System.out.println(probabilidadIntervaloActual);
             }
+            
+            */
+            
+            else if (gna instanceof GeneradorExponencial || gna instanceof GeneradorNormal){
+
+            probabilidadIntervaloActual = gna.valuarFuncionDeDensidad(valorFinIntervaloActual) - gna.valuarFuncionDeDensidad(valorInicioIntervaloActual);
+                
+            }
+            else if (gna instanceof GeneradorUniforme){
+                probabilidadIntervaloActual = 1.0/intervalos.size();
+            }
+            
             frecuenciaEsperadaIntervaloActual = probabilidadIntervaloActual * N; // se multiplica la funcion de densidad por el N para calcular la frecuencia esperada.
             intervaloActual.setFrecuenciaEsperada(frecuenciaEsperadaIntervaloActual); //se setea la frecuencia esperada para cada intervalo de la lista.
-            intervaloActual.setFrecuenciaEsperada(frecuenciaEsperadaIntervaloActual);
+            //intervaloActual.setFrecuenciaEsperada(frecuenciaEsperadaIntervaloActual);
+            
+            
         }
     }
 
@@ -211,7 +229,7 @@ public class ManejadorIntervalos {
 
     public void crearIntervalos(int cantidadIntervalos) // luego de generarse la lista de numeros y tener el maximo y minimo creo los intervalos. la cantidad de intervalos entra por parametro
     {
-
+        if(!(gna instanceof GeneradorPoisson)){
         /*
             int valorEnteroMinimo = (int) valorMinimo;
             valorMinimo = valorEnteroMinimo; // redondea el valor minimo.+
@@ -242,9 +260,27 @@ public class ManejadorIntervalos {
 
             intervalos.add(aux); //intervalos es un array con intervalos.
             k += amplitud; // k se le suma la amplitud que es el valor final del intervalo anterior para que sea el valor inicial del proximo.
+        }}
+        else{
+            double k = 0;
+            double amplitud = 1.0;
+            Intervalo aux = null;
+            for (int i = 0; i < cantidadIntervalos; i++) 
+            {
+                 if (i == (cantidadIntervalos - 1)) {
+                aux = new Intervalo(k, k + amplitud, 0, true);
+            }
+                 if (i < (cantidadIntervalos - 1)) {
+                aux = new Intervalo(k, (k + amplitud), 0, false);
+            }
+                  intervalos.add(aux); //intervalos es un array con intervalos.
+            k += amplitud; // k se le suma la amplitud que es el valor final del intervalo anterior para que sea el valor inicial del proximo.
+        
+            }
+            
         }
     }
-
+ 
     public void mostrarIntervalos() {
         for (Intervalo intervalo : intervalos) {
             System.out.println(intervalo);
