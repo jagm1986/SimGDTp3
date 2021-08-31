@@ -31,6 +31,8 @@ public class GeneradorExponencial extends IGeneradorNumerosAleatorios
     @Override
     public double valuarFuncionDeDensidad(double valorAleatorio) 
     {
+        //Formula: 1-e^(-λ*x)
+        
         double resultado = 1 - Math.exp(-lambda*valorAleatorio);
         return resultado;
     }

@@ -171,7 +171,7 @@ public class Principal extends javax.swing.JFrame {
         txtN.setText("5000");
 
         jLabel12.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
-        jLabel12.setText("Seleccione la cantidad de intervalos:");
+        jLabel12.setText("Ingrese la cantidad de intervalos:");
 
         txtMedia.setEnabled(false);
 
@@ -215,6 +215,12 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
         jLabel7.setText("λ");
+
+        txtIntervalos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIntervalosActionPerformed(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
         jLabel15.setText("Alfa:");
@@ -433,6 +439,7 @@ public class Principal extends javax.swing.JFrame {
            }
     }//GEN-LAST:event_rdNormalActionPerformed
 
+    //Generar Numeros aleatorios y calcular frecuencias
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
        
         manejador.resetear();
@@ -470,12 +477,23 @@ public class Principal extends javax.swing.JFrame {
         }
         if(rdExponencial.isSelected() && fallo == false)
         {
+             
           float lambdaExponencial = Float.parseFloat(txtLambdaExp.getText());
+             if(lambdaExponencial <= 0 )
+           {
+               JOptionPane.showMessageDialog(new JFrame(), "Lambda no puede ser menor o igual a 0", "Parámetros incorrectos", JOptionPane.WARNING_MESSAGE);
+               fallo = true;
+           }
           manejador.generarDistribucionExponencial(lambdaExponencial);
         }
         if(rdPoisson.isSelected() && fallo == false)
         {
             float lambdaPoisson = Float.parseFloat(txtLambdaPoisson.getText());
+             if(lambdaPoisson <= 0 )
+           {
+               JOptionPane.showMessageDialog(new JFrame(), "Lambda no puede ser menor o igual a 0", "Parámetros incorrectos", JOptionPane.WARNING_MESSAGE);
+               fallo = true;
+           }
             manejador.generarDistribucionPoisson(lambdaPoisson);
         }
         
@@ -499,23 +517,29 @@ public class Principal extends javax.swing.JFrame {
         if(fallo == false)
             
         {
-            int cantidadIntervalos = Integer.parseInt(txtIntervalos.getText());
+            int cantidadIntervalos=0;
+            try{
+             cantidadIntervalos = Integer.parseInt(txtIntervalos.getText());}
+            catch(Exception e){
+                 {
+               JOptionPane.showMessageDialog(new JFrame(), "La cantidad de intervalos debe ser un numero entero", "Parámetros incorrectos", JOptionPane.WARNING_MESSAGE);
+               fallo = true;
+           }       
+            }
         
         System.out.println("Cantidad de intervalos a generar: " + cantidadIntervalos);
         
         manejador.crearIntervalos(cantidadIntervalos); // se crean los intervalos en el manejador
         
-        //manejador.mostrarIntervalos();
+        manejador.contarFrecuenciaObservadaPorIntervalo(); // Cuenta la frecuencia esperada por cada intervalo
         
-        manejador.contarFrecuenciaObservadaPorIntervalo();
+        manejador.calcularFrecuenciaEsperadaParaIntervalos(); //Calcula frecuencia esperada para intervalos
         
-        manejador.calcularFrecuenciaEsperadaParaIntervalos();
-        
-        manejador.calcularEstadisticoIntervalos();
+        manejador.calcularEstadisticoIntervalos(); //Calculo estadistico
               
         //Carga de grilla
         
-        tabla.setModel(new TablaNumero(manejador.getIntervalos()));
+        tabla.setModel(new TablaIntervalos(manejador.getIntervalos()));
         tablaNumeros.setModel(new TablaNumeros(manejador.getNumerosGenerados()));
         
         txtSignificancia.setEnabled(true);
@@ -615,6 +639,10 @@ public class Principal extends javax.swing.JFrame {
             lblResultadoPrueba.setBackground(Color.RED);
         }                
     }//GEN-LAST:event_btnPruebaJiActionPerformed
+
+    private void txtIntervalosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIntervalosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIntervalosActionPerformed
 
     
 

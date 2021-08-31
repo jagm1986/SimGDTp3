@@ -158,44 +158,26 @@ public class ManejadorIntervalos {
     }
 
     public void calcularFrecuenciaEsperadaParaIntervalos() {
-        for (Intervalo intervaloActual : intervalos) {
+        for (Intervalo intervaloActual : intervalos) { //Para cada intervalo
+            
             double valorFinIntervaloActual = intervaloActual.getValorFin();
             double valorInicioIntervaloActual = intervaloActual.getValorInicio();
 
             double probabilidadIntervaloActual=0;
             double frecuenciaEsperadaIntervaloActual;
 
-            if ((gna instanceof GeneradorPoisson)) // es distinto para Poisson porque trabaja con la marca de clase.
+            if ((gna instanceof GeneradorPoisson)) // Si es de poisson:
             {
-               /* double amplitudIntervalo = valorFinIntervaloActual - valorInicioIntervaloActual;
-
-                double marcaClaseIntervaloActual = valorInicioIntervaloActual + (amplitudIntervalo / 2);
-
-                double densidadMarcaClaseIntervaloActual = gna.valuarFuncionDeDensidad(marcaClaseIntervaloActual);
-
-                probabilidadIntervaloActual = densidadMarcaClaseIntervaloActual * amplitudIntervalo;*/
                probabilidadIntervaloActual = gna.valuarFuncionDeDensidad(valorInicioIntervaloActual);
                 
-            }/* else {
-                int valorInicioEntero = (int) valorInicioIntervaloActual;
-                int valorFinEntero = (int) valorFinIntervaloActual;
-
-                probabilidadIntervaloActual = 0;
-                for (int i = valorInicioEntero; i < valorFinEntero; i++) {
-                    probabilidadIntervaloActual += gna.valuarFuncionDeDensidad(i);// utiliza la funcion de densidad para calcular la probabilidad.
-                }
-            //  probabilidadIntervaloActual = gna.valuarFuncionDeDensidad(valorFinIntervaloActual) - gna.valuarFuncionDeDensidad(valorInicioIntervaloActual);
-                System.out.println(probabilidadIntervaloActual);
             }
             
-            */
-            
-            else if (gna instanceof GeneradorExponencial || gna instanceof GeneradorNormal){
+            else if (gna instanceof GeneradorExponencial || gna instanceof GeneradorNormal){ // Si es generador exponencial o normal
 
             probabilidadIntervaloActual = gna.valuarFuncionDeDensidad(valorFinIntervaloActual) - gna.valuarFuncionDeDensidad(valorInicioIntervaloActual);
                 
             }
-            else if (gna instanceof GeneradorUniforme){
+            else if (gna instanceof GeneradorUniforme){ // Si es generador uniforme
                 probabilidadIntervaloActual = 1.0/intervalos.size();
             }
             
@@ -209,18 +191,18 @@ public class ManejadorIntervalos {
 
     public void calcularEstadisticoIntervalos() {
         for (Intervalo intervalo : intervalos) {
-            intervalo.generarEstadistico();
+            intervalo.generarEstadistico(); // (FE - FO)^2/FE
         }
     }
 
     public void contarFrecuenciaObservadaPorIntervalo() {
 
-        for (double numeroGenerado : numerosGenerados) // al igual que el tp1. son 2 for anillados que recorre por cada numero de la lista generada
+        for (double numeroGenerado : numerosGenerados) 
         // recorre todos los intervalos preguntando si lo contiene.
         {
             for (Intervalo intervalo : intervalos) {
-                if (intervalo.contiene(numeroGenerado)) {
-                    intervalo.aumentarFrecuenciaObservada();
+                if (intervalo.contiene(numeroGenerado)) { 
+                    intervalo.aumentarFrecuenciaObservada();// Si lo contiene, aumenta la frecuencia observada
                     break;
                 }
             }

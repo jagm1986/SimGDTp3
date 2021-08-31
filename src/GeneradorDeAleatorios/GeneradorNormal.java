@@ -88,19 +88,8 @@ public class GeneradorNormal extends IGeneradorNumerosAleatorios
     @Override
     public double valuarFuncionDeDensidad(double valorAleatorio) 
     {
-       /* double dosPi = Math.PI * 2;
-        double raizDosPi = Math.sqrt(dosPi);
-        double divisor = desviacion * raizDosPi;
-        
-        double base = (valorAleatorio - media) / desviacion;
-        double cuadradoBase = Math.pow(base, 2);
-        double mitadCuadradoBase = cuadradoBase / 2;
-        double exponenteE = 0 - mitadCuadradoBase;
-        double dividendo = Math.exp(exponenteE);
-        
-        double resultado = dividendo / divisor;
-        */
-        NormalDistribution nd = new NormalDistribution(media, desviacion);
+      
+        NormalDistribution nd = new NormalDistribution(media, desviacion); // Usamos directamente una libreria que devuelve la probabilidad acumulada P(X<=x)
         double resultado = nd.cumulativeProbability(valorAleatorio);
         return resultado;
 

@@ -44,6 +44,8 @@ public class GeneradorPoisson extends IGeneradorNumerosAleatorios
     @Override
     public double valuarFuncionDeDensidad(double valorAleatorio)
     {
+            // Formula: (e^-λ * λ^x)/x!
+        
         int vA = (int)valorAleatorio;
         double lambdaALaX = Math.pow(lambda, (double)vA);
         

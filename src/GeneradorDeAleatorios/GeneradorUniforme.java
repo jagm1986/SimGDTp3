@@ -29,6 +29,6 @@ public class GeneradorUniforme extends IGeneradorNumerosAleatorios
     @Override
     public double valuarFuncionDeDensidad(double valorAleatorio)
     {
-        return 0.0; 
+        return 0.0; //Retorna 0 porque la frecuencia esperada es igual para todos los intervalos, y se calcula en el manejador directamente
     }
 }
