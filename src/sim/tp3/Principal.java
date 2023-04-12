@@ -26,11 +26,7 @@ public class Principal extends javax.swing.JFrame {
        
         manejador = new ManejadorIntervalos();
         this.setLocationRelativeTo(null);
-        rdPoisson.setVisible(true);
         txtLambdaPoisson.setVisible(true);
-        btnPruebaJi.setEnabled(false);
-        txtSignificancia.setEnabled(false);
-        
         tablaNumeros.setAutoCreateRowSorter(true);
     }
 
@@ -55,7 +51,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         rdUniforme = new javax.swing.JRadioButton();
         rdExponencial = new javax.swing.JRadioButton();
-        rdPoisson = new javax.swing.JRadioButton();
         rdNormal = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         txtLambdaExp = new javax.swing.JTextField();
@@ -82,10 +77,7 @@ public class Principal extends javax.swing.JFrame {
         tablaNumeros = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         txtIntervalos = new javax.swing.JTextField();
-        txtSignificancia = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
         lblResultadoPrueba = new javax.swing.JLabel();
-        btnPruebaJi = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         lblIntegrantes = new javax.swing.JLabel();
 
@@ -95,7 +87,6 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panel.setBackground(new java.awt.Color(240, 154, 100));
-        panel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         panel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
@@ -117,15 +108,6 @@ public class Principal extends javax.swing.JFrame {
         rdExponencial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rdExponencialActionPerformed(evt);
-            }
-        });
-
-        rdPoisson.setBackground(new java.awt.Color(240, 154, 100));
-        grupoRdDistribuciones.add(rdPoisson);
-        rdPoisson.setText("Poisson");
-        rdPoisson.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdPoissonActionPerformed(evt);
             }
         });
 
@@ -187,19 +169,19 @@ public class Principal extends javax.swing.JFrame {
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Intervalo", "Frecuencia observada", "Frecuencia esperada", "Estadístico de la prueba"
+                "Intervalo", "Frecuencia observada", "Frecuencia esperada"
             }
         ));
         jScrollPane1.setViewportView(tabla);
@@ -222,23 +204,13 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jLabel15.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
-        jLabel15.setText("Alfa:");
-
         lblResultadoPrueba.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
-
-        btnPruebaJi.setText("Prueba Chi Cuadrado");
-        btnPruebaJi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPruebaJiActionPerformed(evt);
-            }
-        });
 
         jLabel8.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
         jLabel8.setText("Poisson");
 
         lblIntegrantes.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
-        lblIntegrantes.setText("Integrantes: Dominguez Ariel, Gudin Andres, Juarez Diego, Paglia Matias, Toia Lucia");
+        lblIntegrantes.setText("Integrantes: Pirra Juan Pablo, Gudin Andres, Lopez Eduardo, Mufad Hassan, Ghirardotti Andres");
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -247,80 +219,70 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(panelLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblIntegrantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addComponent(lblResultadoPrueba, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblResultadoPrueba, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(panelLayout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtSignificancia, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnPruebaJi, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnGraficar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelLayout.createSequentialGroup()
-                                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(panelLayout.createSequentialGroup()
-                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(lblA, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtA, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(lblB, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtB, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(panelLayout.createSequentialGroup()
-                                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel5)
-                                                    .addComponent(jLabel8))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(panelLayout.createSequentialGroup()
-                                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(txtLambdaPoisson, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(panelLayout.createSequentialGroup()
-                                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(txtLambdaExp, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                            .addGroup(panelLayout.createSequentialGroup()
-                                                .addComponent(rdUniforme)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(rdExponencial)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(rdPoisson)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(rdNormal))
-                                            .addComponent(txtIntervalos, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(panelLayout.createSequentialGroup()
-                                                .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(48, 48, 48)
-                                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtN, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(panelLayout.createSequentialGroup()
-                                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtMedia, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtDesviacion, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 20, Short.MAX_VALUE)))
-                        .addGap(17, 17, 17))
-                    .addComponent(lblIntegrantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnGraficar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(panelLayout.createSequentialGroup()
+                                            .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(panelLayout.createSequentialGroup()
+                                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(lblA, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(txtA, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(lblB, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(txtB, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(panelLayout.createSequentialGroup()
+                                                    .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel5)
+                                                        .addComponent(jLabel8))
+                                                    .addGap(18, 18, 18)
+                                                    .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(panelLayout.createSequentialGroup()
+                                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                            .addComponent(txtLambdaPoisson, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(panelLayout.createSequentialGroup()
+                                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                            .addComponent(txtLambdaExp, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addGroup(panelLayout.createSequentialGroup()
+                                                    .addComponent(rdUniforme)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(rdExponencial)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(rdNormal))
+                                                .addComponent(txtIntervalos, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(panelLayout.createSequentialGroup()
+                                                    .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(48, 48, 48)
+                                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(txtN, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(panelLayout.createSequentialGroup()
+                                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(txtMedia, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(txtDesviacion, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGap(36, 36, 36)
+                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 31, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,7 +295,6 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(rdUniforme)
                             .addComponent(rdExponencial)
-                            .addComponent(rdPoisson)
                             .addComponent(rdNormal))
                         .addGap(18, 18, 18)
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -374,15 +335,11 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPruebaJi)
-                    .addComponent(txtSignificancia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15)
-                    .addComponent(btnGraficar))
+                .addComponent(btnGraficar)
                 .addGap(18, 18, 18)
                 .addComponent(lblResultadoPrueba, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addComponent(lblIntegrantes, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblIntegrantes, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -486,16 +443,6 @@ public class Principal extends javax.swing.JFrame {
            }
           manejador.generarDistribucionExponencial(lambdaExponencial);
         }
-        if(rdPoisson.isSelected() && fallo == false)
-        {
-            float lambdaPoisson = Float.parseFloat(txtLambdaPoisson.getText());
-             if(lambdaPoisson <= 0 )
-           {
-               JOptionPane.showMessageDialog(new JFrame(), "Lambda no puede ser menor o igual a 0", "Parámetros incorrectos", JOptionPane.WARNING_MESSAGE);
-               fallo = true;
-           }
-            manejador.generarDistribucionPoisson(lambdaPoisson);
-        }
         
         if(rdNormal.isSelected() && fallo == false)
         {
@@ -541,9 +488,6 @@ public class Principal extends javax.swing.JFrame {
         
         tabla.setModel(new TablaIntervalos(manejador.getIntervalos()));
         tablaNumeros.setModel(new TablaNumeros(manejador.getNumerosGenerados()));
-        
-        txtSignificancia.setEnabled(true);
-        btnPruebaJi.setEnabled(true);
         }
         
         
@@ -563,8 +507,8 @@ public class Principal extends javax.swing.JFrame {
              }
                  
      
-                  
-            // crear grafico
+            /*      
+            // crear grafico barras 3d
             JFreeChart graficoBarras = ChartFactory.createBarChart3D(
                      "Frecuencia de números aleatorios generados por intervalo",        //Título de la gráfica
                      "Intervalos",           //leyenda Eje horizontal
@@ -588,57 +532,36 @@ public class Principal extends javax.swing.JFrame {
             frame.pack();
             frame.setVisible(true);
             frame.setLocationRelativeTo(null);
+             */
+            
+              // crear grafico
+            JFreeChart graficoBarras = ChartFactory.createBarChart(
+                    "Frecuencia de números aleatorios generados por intervalo",        //Título de la gráfica
+                     "Intervalos",           //leyenda Eje horizontal
+                     "Frecuencia observada",      //leyenda Eje vertical
+                     dataset,                   //datos
+                     PlotOrientation.VERTICAL,  //orientación
+                     true,                      //incluir leyendas
+                     true,                      //mostrar tooltips
+                     true);                   
+
+            graficoBarras.setBackgroundPaint(Color.lightGray);
+
+            CategoryPlot plot =(CategoryPlot) graficoBarras.getPlot();
+            plot.setBackgroundPaint(Color.white); //fondo del grafico
+            plot.setDomainGridlinesVisible(true);//lineas de rangos, visibles
+            plot.setRangeGridlinePaint(Color.BLACK);//color de las lineas de rangos
+            
+
+            // crear la ventana del grafico
+            ChartFrame frame = new ChartFrame("Histograma",graficoBarras);
+            frame.pack();
+            frame.setVisible(true);
+            frame.setLocationRelativeTo(null);
         }
         else
             JOptionPane.showMessageDialog(this,"Debe cargar numeros antes de graficar","Error",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnGraficarActionPerformed
-
-    private void rdPoissonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdPoissonActionPerformed
-        if( rdPoisson.isSelected() )
-        {
-            txtLambdaPoisson.setEnabled(true);
-            txtLambdaExp.setEnabled(false);
-            txtA.setEnabled(false);txtB.setEnabled(false);
-            txtMedia.setEnabled(false);txtDesviacion.setEnabled(false);
-            limpiarTextBox();
-        }
-    }//GEN-LAST:event_rdPoissonActionPerformed
-
-    private void btnPruebaJiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPruebaJiActionPerformed
-        // TODO add your handling code here:
-
-        double valorSeleccionado = Double.parseDouble(txtSignificancia.getText());
-        double valorSeleccionable = valorSeleccionado * 1000;
-
-        int selector = (int) valorSeleccionable;
-
-        //Realizacion de prueba ji-cuadrado.
-
-        AbstractTableModel modeloTabla = (AbstractTableModel) tabla.getModel();
-
-        int cantidadFilas = modeloTabla.getRowCount();
-        int cantidadColumnas = modeloTabla.getColumnCount();
-        double valorEstadistico = (double) modeloTabla.getValueAt((cantidadFilas - 1), (cantidadColumnas - 1));
-
-        int gradosLibertad = tabla.getRowCount() - 2;
-
-        CalculadorJiCuadrado calculadorJiCuadrado = new CalculadorJiCuadrado();
-
-        double alfa = 1-valorSeleccionado;
-        
-        boolean superaPrueba = calculadorJiCuadrado.superaPrueba(gradosLibertad, valorEstadistico, alfa);
-
-        if(superaPrueba)
-        {
-            lblResultadoPrueba.setText("PRUEBA JI-CUADRADO SUPERADA!!!");
-            lblResultadoPrueba.setBackground(Color.GREEN);
-        }
-        else
-        {
-            lblResultadoPrueba.setText("PRUEBA JI-CUADRADO NO SUPERADA");
-            lblResultadoPrueba.setBackground(Color.RED);
-        }                
-    }//GEN-LAST:event_btnPruebaJiActionPerformed
 
     private void txtIntervalosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIntervalosActionPerformed
         // TODO add your handling code here:
@@ -675,7 +598,6 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerar;
     private javax.swing.JButton btnGraficar;
-    private javax.swing.JButton btnPruebaJi;
     private javax.swing.ButtonGroup grupoCantidadIntervalos;
     private javax.swing.ButtonGroup grupoRdDistribuciones;
     private javax.swing.JLabel jLabel1;
@@ -684,7 +606,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -700,7 +621,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel panel;
     private javax.swing.JRadioButton rdExponencial;
     private javax.swing.JRadioButton rdNormal;
-    private javax.swing.JRadioButton rdPoisson;
     private javax.swing.JRadioButton rdUniforme;
     private javax.swing.JTable tabla;
     private javax.swing.JTable tablaNumeros;
@@ -712,6 +632,5 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField txtLambdaPoisson;
     private javax.swing.JTextField txtMedia;
     private javax.swing.JTextField txtN;
-    private javax.swing.JTextField txtSignificancia;
     // End of variables declaration//GEN-END:variables
 }
