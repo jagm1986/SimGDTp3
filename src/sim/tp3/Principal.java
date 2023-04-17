@@ -1,7 +1,6 @@
 
 package sim.tp3;
 
-import GeneradorDeAleatorios.CalculadorJiCuadrado;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -26,7 +25,6 @@ public class Principal extends javax.swing.JFrame {
        
         manejador = new ManejadorIntervalos();
         this.setLocationRelativeTo(null);
-        txtLambdaPoisson.setVisible(true);
         tablaNumeros.setAutoCreateRowSorter(true);
     }
 
@@ -35,7 +33,6 @@ public class Principal extends javax.swing.JFrame {
      txtA.setText("");
      txtB.setText("");
      txtLambdaExp.setText("");
-     txtLambdaPoisson.setText("");
      txtMedia.setText("");
      txtDesviacion.setText("");
     
@@ -47,6 +44,8 @@ public class Principal extends javax.swing.JFrame {
         grupoRdDistribuciones = new javax.swing.ButtonGroup();
         grupoCantidadIntervalos = new javax.swing.ButtonGroup();
         jLabel14 = new javax.swing.JLabel();
+        grupoRadioIntervalos = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         panel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         rdUniforme = new javax.swing.JRadioButton();
@@ -80,21 +79,27 @@ public class Principal extends javax.swing.JFrame {
         lblResultadoPrueba = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         lblIntegrantes = new javax.swing.JLabel();
+        rdIntervalo15 = new javax.swing.JRadioButton();
+        rdIntervalo20 = new javax.swing.JRadioButton();
+        rdIntervalo10 = new javax.swing.JRadioButton();
+        rdIntervalo25 = new javax.swing.JRadioButton();
+        txtHasta = new javax.swing.JTextField();
+        txtDesde = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
 
         jLabel14.setFont(new java.awt.Font("Cambria", 3, 14)); // NOI18N
         jLabel14.setText("Seleccione la cantidad de intervalos");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panel.setBackground(new java.awt.Color(240, 154, 100));
+        panel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         panel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
         jLabel1.setText("Seleccione una distribución ");
 
-        rdUniforme.setBackground(new java.awt.Color(240, 154, 100));
         grupoRdDistribuciones.add(rdUniforme);
-        rdUniforme.setSelected(true);
         rdUniforme.setText("Uniforme");
         rdUniforme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +107,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        rdExponencial.setBackground(new java.awt.Color(240, 154, 100));
         grupoRdDistribuciones.add(rdExponencial);
         rdExponencial.setText("Exponencial");
         rdExponencial.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +115,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        rdNormal.setBackground(new java.awt.Color(240, 154, 100));
         grupoRdDistribuciones.add(rdNormal);
         rdNormal.setText("Normal");
         rdNormal.addActionListener(new java.awt.event.ActionListener() {
@@ -212,6 +215,60 @@ public class Principal extends javax.swing.JFrame {
         lblIntegrantes.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
         lblIntegrantes.setText("Integrantes: Pirra Juan Pablo, Gudin Andres, Lopez Eduardo, Mufad Hassan, Ghirardotti Andres");
 
+        grupoRadioIntervalos.add(rdIntervalo15);
+        rdIntervalo15.setText("15");
+        rdIntervalo15.setActionCommand("intervalo15");
+        rdIntervalo15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdIntervalo15ActionPerformed(evt);
+            }
+        });
+
+        grupoRadioIntervalos.add(rdIntervalo20);
+        rdIntervalo20.setText("20");
+        rdIntervalo20.setActionCommand("intervalo20");
+        rdIntervalo20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdIntervalo20ActionPerformed(evt);
+            }
+        });
+
+        grupoRadioIntervalos.add(rdIntervalo10);
+        rdIntervalo10.setText("10");
+        rdIntervalo10.setActionCommand("intervalo10");
+        rdIntervalo10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdIntervalo10ActionPerformed(evt);
+            }
+        });
+
+        grupoRadioIntervalos.add(rdIntervalo25);
+        rdIntervalo25.setText("25");
+        rdIntervalo25.setActionCommand("intervalo25");
+        rdIntervalo25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdIntervalo25ActionPerformed(evt);
+            }
+        });
+
+        txtHasta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHastaActionPerformed(evt);
+            }
+        });
+
+        txtDesde.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDesdeActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setFont(new java.awt.Font("Cambria Math", 0, 12)); // NOI18N
+        jLabel15.setText("Desde");
+
+        jLabel16.setFont(new java.awt.Font("Cambria Math", 0, 12)); // NOI18N
+        jLabel16.setText("Hasta");
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
@@ -260,14 +317,18 @@ public class Principal extends javax.swing.JFrame {
                                                     .addComponent(rdExponencial)
                                                     .addGap(18, 18, 18)
                                                     .addComponent(rdNormal))
-                                                .addComponent(txtIntervalos, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGroup(panelLayout.createSequentialGroup()
-                                                    .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(48, 48, 48)
-                                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(23, 23, 23)
+                                                    .addComponent(txtIntervalos, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(rdIntervalo10)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(txtN, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(rdIntervalo15)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(rdIntervalo20)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(rdIntervalo25))
+                                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGroup(panelLayout.createSequentialGroup()
                                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,8 +339,25 @@ public class Principal extends javax.swing.JFrame {
                                                     .addGap(18, 18, 18)
                                                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(txtDesviacion, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGap(36, 36, 36)
+                                                    .addComponent(txtDesviacion, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(panelLayout.createSequentialGroup()
+                                                    .addGap(17, 17, 17)
+                                                    .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(panelLayout.createSequentialGroup()
+                                                            .addComponent(jLabel15)
+                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                            .addComponent(txtDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addGap(12, 12, 12)
+                                                            .addComponent(jLabel16)
+                                                            .addGap(18, 18, 18)
+                                                            .addComponent(txtHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(panelLayout.createSequentialGroup()
+                                                            .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addGap(48, 48, 48)
+                                                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                            .addComponent(txtN, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addGap(53, 53, 53)
                                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(0, 31, Short.MAX_VALUE)))
                         .addContainerGap())))
@@ -288,7 +366,7 @@ public class Principal extends javax.swing.JFrame {
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(7, 7, 7)
@@ -323,12 +401,23 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtIntervalos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rdIntervalo15)
+                            .addComponent(rdIntervalo20)
+                            .addComponent(rdIntervalo25)
+                            .addComponent(rdIntervalo10)
+                            .addComponent(txtIntervalos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(12, 12, 12)
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
                             .addComponent(btnGenerar)
                             .addComponent(txtN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16)
+                            .addComponent(txtDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -343,12 +432,14 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
+        rdIntervalo15.getAccessibleContext().setAccessibleName("10");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
@@ -368,7 +459,6 @@ public class Principal extends javax.swing.JFrame {
            {
              txtA.setEnabled(true);txtB.setEnabled(true);
              txtLambdaExp.setEnabled(false);
-             txtLambdaPoisson.setEnabled(false);
              txtMedia.setEnabled(false);txtDesviacion.setEnabled(false);
              limpiarTextBox();
            }
@@ -379,7 +469,6 @@ public class Principal extends javax.swing.JFrame {
            {
              txtLambdaExp.setEnabled(true);
              txtA.setEnabled(false);txtB.setEnabled(false);
-             txtLambdaPoisson.setEnabled(false);
              txtMedia.setEnabled(false);txtDesviacion.setEnabled(false);
              limpiarTextBox();
            }
@@ -389,7 +478,6 @@ public class Principal extends javax.swing.JFrame {
            if( rdNormal.isSelected() )
            {
              txtMedia.setEnabled(true);txtDesviacion.setEnabled(true);
-             txtLambdaPoisson.setEnabled(false);
              txtLambdaExp.setEnabled(false);
              txtA.setEnabled(false);txtB.setEnabled(false);
              limpiarTextBox();
@@ -399,8 +487,17 @@ public class Principal extends javax.swing.JFrame {
     //Generar Numeros aleatorios y calcular frecuencias
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
        
-        manejador.resetear();
         boolean fallo = false;
+        
+        if (!rdUniforme.isSelected() && !rdExponencial.isSelected() && !rdNormal.isSelected() ){
+            
+        JOptionPane.showMessageDialog(new JFrame(), "Para generar seleccione una distribución",
+                "Parámetros incorrectos", JOptionPane.WARNING_MESSAGE);             
+
+        }
+        
+        manejador.resetear();
+        
         boolean discreta = true;
       
         if(Integer.parseInt(txtN.getText()) < 1000001 & Integer.parseInt(txtN.getText()) > 0)
@@ -466,7 +563,19 @@ public class Principal extends javax.swing.JFrame {
         {
             int cantidadIntervalos=0;
             try{
-             cantidadIntervalos = Integer.parseInt(txtIntervalos.getText());}
+                 if (rdIntervalo10.isSelected()){
+                     cantidadIntervalos = Integer.parseInt(rdIntervalo10.getText());
+                 } else if (rdIntervalo15.isSelected()){
+                     cantidadIntervalos = Integer.parseInt(rdIntervalo15.getText());
+                 }  else if (rdIntervalo20.isSelected()){
+                     cantidadIntervalos = Integer.parseInt(rdIntervalo20.getText());
+                 } else if (rdIntervalo25.isSelected()){
+                     cantidadIntervalos = Integer.parseInt(rdIntervalo25.getText());
+                 } else if (!txtIntervalos.getText().equals("")){
+                     cantidadIntervalos = Integer.parseInt(txtIntervalos.getText());
+                 }
+            }
+                 
             catch(Exception e){
                  {
                JOptionPane.showMessageDialog(new JFrame(), "La cantidad de intervalos debe ser un numero entero", "Parámetros incorrectos", JOptionPane.WARNING_MESSAGE);
@@ -482,15 +591,12 @@ public class Principal extends javax.swing.JFrame {
         
         manejador.calcularFrecuenciaEsperadaParaIntervalos(); //Calcula frecuencia esperada para intervalos
         
-        manejador.calcularEstadisticoIntervalos(); //Calculo estadistico
               
         //Carga de grilla
-        
+        //agregar el desde hasta
         tabla.setModel(new TablaIntervalos(manejador.getIntervalos()));
         tablaNumeros.setModel(new TablaNumeros(manejador.getNumerosGenerados()));
         }
-        
-        
        
     }//GEN-LAST:event_btnGenerarActionPerformed
 
@@ -567,6 +673,30 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIntervalosActionPerformed
 
+    private void rdIntervalo15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdIntervalo15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdIntervalo15ActionPerformed
+
+    private void rdIntervalo20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdIntervalo20ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdIntervalo20ActionPerformed
+
+    private void rdIntervalo10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdIntervalo10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdIntervalo10ActionPerformed
+
+    private void rdIntervalo25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdIntervalo25ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdIntervalo25ActionPerformed
+
+    private void txtHastaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHastaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHastaActionPerformed
+
+    private void txtDesdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDesdeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDesdeActionPerformed
+
     
 
     public static void main(String args[]) {
@@ -598,7 +728,9 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerar;
     private javax.swing.JButton btnGraficar;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup grupoCantidadIntervalos;
+    private javax.swing.ButtonGroup grupoRadioIntervalos;
     private javax.swing.ButtonGroup grupoRdDistribuciones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -606,6 +738,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -620,13 +754,19 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel lblResultadoPrueba;
     private javax.swing.JPanel panel;
     private javax.swing.JRadioButton rdExponencial;
+    private javax.swing.JRadioButton rdIntervalo10;
+    private javax.swing.JRadioButton rdIntervalo15;
+    private javax.swing.JRadioButton rdIntervalo20;
+    private javax.swing.JRadioButton rdIntervalo25;
     private javax.swing.JRadioButton rdNormal;
     private javax.swing.JRadioButton rdUniforme;
     private javax.swing.JTable tabla;
     private javax.swing.JTable tablaNumeros;
     private javax.swing.JTextField txtA;
     private javax.swing.JTextField txtB;
+    private javax.swing.JTextField txtDesde;
     private javax.swing.JTextField txtDesviacion;
+    private javax.swing.JTextField txtHasta;
     private javax.swing.JTextField txtIntervalos;
     private javax.swing.JTextField txtLambdaExp;
     private javax.swing.JTextField txtLambdaPoisson;

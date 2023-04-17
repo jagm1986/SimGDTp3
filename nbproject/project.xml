@@ -6,6 +6,7 @@
             <name>SimGDTp3</name>
             <source-roots>
                 <root id="src.dir"/>
+                <root id="src.GeneradorDeAleatorios.dir"/>
             </source-roots>
             <test-roots>
                 <root id="test.src.dir"/>

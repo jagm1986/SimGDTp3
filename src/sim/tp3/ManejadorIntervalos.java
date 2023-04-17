@@ -2,7 +2,6 @@ package sim.tp3;
 
 import GeneradorDeAleatorios.GeneradorExponencial;
 import GeneradorDeAleatorios.GeneradorNormal;
-import GeneradorDeAleatorios.GeneradorPoisson;
 import GeneradorDeAleatorios.GeneradorUniforme;
 import GeneradorDeAleatorios.IGeneradorNumerosAleatorios;
 import java.util.ArrayList;
@@ -72,7 +71,7 @@ public class ManejadorIntervalos {
             }
         }
         System.out.println("valor maximo: " + valorMaximo + "|| valor minimo: " + valorMinimo);
-        valorMinimo = a - 0.0001;
+        valorMinimo = a !=0 ? a- 0.0001 : a;
         valorMaximo = b + 0.0001;
         System.out.println("valor maximo nuevo: " + valorMaximo + "|| valor minimo nuevo: " + valorMinimo);
     }
@@ -105,28 +104,6 @@ public class ManejadorIntervalos {
         valorMaximo = valorMaximo + 0.0001;
         System.out.println("valor maximo nuevo: " + valorMaximo + "|| valor minimo nuevo: " + valorMinimo);
 
-    }
-
-    public void generarDistribucionPoisson(float lambda) {
-        gna = new GeneradorPoisson(lambda);
-
-        for (int i = 0; i < N; i++) {
-            double numeroGenerado =  gna.generarAleatorio();
-            numerosGenerados.add(numeroGenerado);
-
-            if (i == 0) {
-                valorMinimo = numeroGenerado;
-                valorMaximo = numeroGenerado;
-            } else {
-                if (numeroGenerado > valorMaximo) {
-                    valorMaximo = numeroGenerado;
-                }
-                if (numeroGenerado < valorMinimo) {
-                    valorMinimo = numeroGenerado;
-                }
-            }
-        }
-        System.out.println("valor maximo: " + valorMaximo + "|| valor minimo: " + valorMinimo);
     }
 
     public void generarDistribucionNormal(float media, float desviacion) {
@@ -166,13 +143,7 @@ public class ManejadorIntervalos {
             double probabilidadIntervaloActual=0;
             double frecuenciaEsperadaIntervaloActual;
 
-            if ((gna instanceof GeneradorPoisson)) // Si es de poisson:
-            {
-               probabilidadIntervaloActual = gna.valuarFuncionDeDensidad(valorInicioIntervaloActual);
-                
-            }
-            
-            else if (gna instanceof GeneradorExponencial || gna instanceof GeneradorNormal){ // Si es generador exponencial o normal
+            if (gna instanceof GeneradorExponencial || gna instanceof GeneradorNormal){ // Si es generador exponencial o normal
 
             probabilidadIntervaloActual = gna.valuarFuncionDeDensidad(valorFinIntervaloActual) - gna.valuarFuncionDeDensidad(valorInicioIntervaloActual);
                 
@@ -189,11 +160,6 @@ public class ManejadorIntervalos {
         }
     }
 
-    public void calcularEstadisticoIntervalos() {
-        for (Intervalo intervalo : intervalos) {
-            intervalo.generarEstadistico(); // (FE - FO)^2/FE
-        }
-    }
 
     public void contarFrecuenciaObservadaPorIntervalo() {
 
@@ -211,39 +177,8 @@ public class ManejadorIntervalos {
 
     public void crearIntervalos(int cantidadIntervalos) // luego de generarse la lista de numeros y tener el maximo y minimo creo los intervalos. la cantidad de intervalos entra por parametro
     {
-        if(!(gna instanceof GeneradorPoisson)){
-        /*
-            int valorEnteroMinimo = (int) valorMinimo;
-            valorMinimo = valorEnteroMinimo; // redondea el valor minimo.+
-
-            double valorMaximoProximo = valorMaximo + 1;
-            int valorEnteroMaximo = (int) valorMaximoProximo;
-            valorMaximo = valorEnteroMaximo; // hace el valor maximo mas uno para pasar las comparaciones y que no falte ninguno. 
-        */
-        // primero calculo el rango.
-        double recorrido = valorMaximo - valorMinimo;
-        double amplitud = recorrido / cantidadIntervalos;
-       
-        double k = valorMinimo; // se lo renombra al valor minimo como k para mas proligidad.
-
-        Intervalo aux = null; // creo un intervalo auxiliar.
-
-        for (int i = 0; i < cantidadIntervalos; i++) {
-
-            // voy creando los intervalos de la siguiente forma
-            //limite inferior,limite superior ,frecuencia esperada 
-            // el boolean define si es el ultimo intervalo para considerar luego en la frecuencia observada.
-            if (i == (cantidadIntervalos - 1)) {
-                aux = new Intervalo(k, k + amplitud, 0, true);
-            }
-            if (i < (cantidadIntervalos - 1)) {
-                aux = new Intervalo(k, (k + amplitud), 0, false);
-            }
-
-            intervalos.add(aux); //intervalos es un array con intervalos.
-            k += amplitud; // k se le suma la amplitud que es el valor final del intervalo anterior para que sea el valor inicial del proximo.
-        }}
-        else{
+    
+        
             double k = 0;
             double amplitud = 1.0;
             Intervalo aux = null;
@@ -260,7 +195,7 @@ public class ManejadorIntervalos {
         
             }
             
-        }
+        
     }
  
     public void mostrarIntervalos() {
