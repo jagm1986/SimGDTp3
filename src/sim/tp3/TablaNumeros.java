@@ -13,8 +13,6 @@ public class TablaNumeros extends AbstractTableModel
     private String[]  mColumnas ={"Orden","Aleatorio"};
     private ArrayList<Double> numeros;
     
-   
-
      
     
     public TablaNumeros(ArrayList<Double> nums) {

@@ -11,7 +11,6 @@ public class Intervalo
     private int frecuenciaObservada ;
     private double frecuenciaEsperada;
     
-    private double valorEstadistico;
     private boolean ultimo;
         
     public Intervalo(double valorInicio, double valorFin, int frecuenciaEsperadaCalculada, boolean esElUltimo) 
@@ -58,15 +57,7 @@ public class Intervalo
       return resultado;
     }
     
-    public void generarEstadistico()
-    {
-        double numerador = Math.pow((double)(frecuenciaEsperada - frecuenciaObservada),2);
-        double resultado = numerador / (double) frecuenciaEsperada;
-        
-        if(frecuenciaEsperada == 0) resultado = 0;
-        
-        valorEstadistico = resultado;
-    }
+
     
     public String nombreIntervalo() // devuelve el nombre del intervalo para la matriz.
     {
@@ -85,10 +76,6 @@ public class Intervalo
         return frecuenciaEsperada;
     } 
     
-    public double getEstadistico()
-    {
-        return valorEstadistico;
-    }
 
     public void setFrecuenciaEsperada(double frecuenciaEsperadaCalculada)
     {

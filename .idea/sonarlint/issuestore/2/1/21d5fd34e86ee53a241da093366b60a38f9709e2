@@ -1,0 +1,83 @@
+
+p
+java:S1450½"YRemove the "btnGenerar" field and declare it as a local variable in the relevant methods.(†¶ÕÚ
+q
+java:S1450¾"ZRemove the "btnGraficar" field and declare it as a local variable in the relevant methods.(‡ ¦
+}
+java:S1450¿"fRemove the "grupoCantidadIntervalos" field and declare it as a local variable in the relevant methods.(—ôÏ„
+€
+java:S1450À"dRemove the "grupoRdDistribuciones" field and declare it as a local variable in the relevant methods.(„ÀŠÕÿÿÿÿÿ
+r
+java:S1450Á"VRemove the "jLabel1" field and declare it as a local variable in the relevant methods.(°ãÉ¸ÿÿÿÿÿ
+s
+java:S1450Â"WRemove the "jLabel10" field and declare it as a local variable in the relevant methods.(¼õò†şÿÿÿÿ
+s
+java:S1450Ã"WRemove the "jLabel11" field and declare it as a local variable in the relevant methods.(‰Ó‚©øÿÿÿÿ
+n
+java:S1450Ä"WRemove the "jLabel12" field and declare it as a local variable in the relevant methods.(¶“¡
+s
+java:S1450Å"WRemove the "jLabel13" field and declare it as a local variable in the relevant methods.(ÑİĞİıÿÿÿÿ
+r
+java:S1450Æ"VRemove the "jLabel2" field and declare it as a local variable in the relevant methods.(™úòˆüÿÿÿÿ
+m
+java:S1450Ç"VRemove the "jLabel5" field and declare it as a local variable in the relevant methods.(ó Ù®
+r
+java:S1450È"VRemove the "jLabel6" field and declare it as a local variable in the relevant methods.(¸ôÂøÿÿÿÿ
+r
+java:S1450É"VRemove the "jLabel9" field and declare it as a local variable in the relevant methods.(Ì’óĞşÿÿÿÿ
+w
+java:S1450Ê"[Remove the "jScrollPane1" field and declare it as a local variable in the relevant methods.(¤á×ÿÿÿÿÿ
+w
+java:S1450Ë"[Remove the "jScrollPane2" field and declare it as a local variable in the relevant methods.(ŠÌ«·şÿÿÿÿ
+o
+java:S1450Ì"SRemove the "lblA" field and declare it as a local variable in the relevant methods.(®•’øÿÿÿÿ
+j
+java:S1450Í"SRemove the "lblB" field and declare it as a local variable in the relevant methods.(èÛ¡¯
+p
+java:S1450Î"TRemove the "panel" field and declare it as a local variable in the relevant methods.(‡Üéùşÿÿÿÿ
+F
+java:S1172ç"*Remove this unused method parameter "evt".(ŒÂèºüÿÿÿÿ
+F
+java:S1172ò"*Remove this unused method parameter "evt".(Š×ŞØÿÿÿÿÿ
+F
+java:S1172ı"*Remove this unused method parameter "evt".(é¶øÿÿÿÿ
+i
+java:S3776ˆ"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(óù‡ñ
+A
+java:S1172ˆ"*Remove this unused method parameter "evt".(óù‡ñ
+>
+java:S1125˜"'Remove the unnecessary boolean literal.(ñ ›ë
+C
+java:S1125©"'Remove the unnecessary boolean literal.(æ°Ê¶úÿÿÿÿ
+>
+java:S1125®"'Remove the unnecessary boolean literal.(õÖ”è
+>
+java:S1125´"'Remove the unnecessary boolean literal.(ÂµĞø
+C
+java:S1125Å"'Remove the unnecessary boolean literal.(àÃş¨üÿÿÿÿ
+O	java:S106Ê"9Replace this use of System.out or System.err by a logger.(˜—£¼
+R	java:S125Î"<This block of commented-out lines of code should be removed.(´‘çæ
+F
+java:S1172à"*Remove this unused method parameter "evt".(œ÷­úÿÿÿÿ
+F
+java:S1172‹"*Remove this unused method parameter "evt".(äü¾¾ùÿÿÿÿ
+F
+java:S1197¢"*Move the array designators [] to the type.(¡şÏÖøÿÿÿÿ
+C
+java:S1602·",Remove useless curly braces around statement(¤çšÜ
+d
+java:S1192V"IDefine a constant instead of duplicating this literal "Cambria" 11 times.(õù‚²üÿÿÿÿ
+t
+java:S1192“"XDefine a constant instead of duplicating this literal "ParÃ¡metros incorrectos" 3 times.(Ã¹¹€şÿÿÿÿ
+C
+java:S1604\"(Make this anonymous inner class a lambda(üÆÚüÿÿÿÿ
+C
+java:S1604d"(Make this anonymous inner class a lambda(ä¹Ë’ÿÿÿÿÿ
+>
+java:S1604l"(Make this anonymous inner class a lambda(×”®™
+C
+java:S1604t"(Make this anonymous inner class a lambda(¾èƒŠÿÿÿÿÿ
+D
+java:S1604­"(Make this anonymous inner class a lambda(‰ëöØùÿÿÿÿ
+D
+java:S1604Ç"(Make this anonymous inner class a lambda(ğÜ‚Öùÿÿÿÿ
